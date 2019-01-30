@@ -12,11 +12,7 @@ class UI {
         this.clientPhoneInput = document.querySelector('#contact-phone');
         this.clientEmailInput = document.querySelector('#contact-email');
         this.productionNameOfShowInput = document.querySelector('#show-name');
-        // this.productionCompanyInput = document.querySelector('#production-company');
-        // this.productionCompanyPersonInput = document.querySelector('#production-contact-name');
-        // this.productionCompanyPersonTitleInput = document.querySelector('#production-contact-title');
-        // this.productionCompanyPhoneInput = document.querySelector('#production-contact-phone');
-        // this.productionCompanyEmailInput = document.querySelector('#production-contact-email');
+
         this.copyrightInput = document.querySelector('input[name="copyright-license"]:checked');
         this.contractSignDateInput = document.querySelector('#contract-sign-date');
         this.contractStartDateInput = document.querySelector('#contract-start');
@@ -29,22 +25,12 @@ class UI {
         this.copyrightFillBlankInput = document.querySelector('input[id="copyright-license-none"]');
 
         // Web OTT Indentification
-        // this.payWallInput = document.querySelector('input[name="paywall-permission"]:checked');
         this.selectVideoOnDemandInput = document.querySelector('input[name="svod-gallery"]:checked');
         this.webCategoryInput = document.querySelector('#web-category');
-        // this.otherVideoOnDemandInput = document.querySelector('#vod-other-description');
-        // this.webGraphicRequiredInput = document.querySelector('input[name="web-graphics"]:checked');
-        // this.webProgramDescriptionInput = document.querySelector('#program-description');
-        // this.webButtonInput = document.querySelector('#web-buttons');
 
-        // this.payWallRadioInFrontInput = document.querySelector('input[id="paywall-permission-in-front"]');
-        // this.payWallRadioBehindInput = document.querySelector('input[id="paywall-permission-behind"]');
         this.selectVideoOnDemandYesInput = document.querySelector('input[id="web-svod-yes"]')
         this.selectVideoOnDemandNoInput = document.querySelector('input[id="web-svod-no"]')
         this.selectVideoOnDemandBlankInput = document.querySelector('input[id="web-svod-none"]')
-        // this.webGraphicRequiredYesInput = document.querySelector('input[id="webott-web-graphic-yes"]')
-        // this.webGraphicRequiredNoInput = document.querySelector('input[id="webott-web-graphic-no"]')
-        // this.webGraphicRequiredExisitingInput = document.querySelector('input[id="webott-web-graphic-existing"]')
 
         // Store Duplication FTP
         this.persmissionToSellInput = document.querySelector('input[name="sell-permission"]:checked');
@@ -75,31 +61,20 @@ class UI {
 
         // Social Media
         this.socialMediaPermissionInput = document.querySelector('input[name="social-media-permission"]:checked');
-        // this.fullFacebookVideoInput = document.querySelector('input[name="facebook-video-permission"]:checked');
-        // this.socialMediaStartDateInput = document.querySelector('#social-media-start-date');
-        // this.socialMediaEndDateInput = document.querySelector('#social-media-end-date');
-        // this.socialFrequencyInput = document.querySelector('#social-media-frequency');
-        // this.socialAdditionalInfoInput = document.querySelector('#additional-social-media-info');
 
         this.socialMediaPermissionYesInput = document.querySelector('input[id="social-media-permission-yes"]')
         this.socialMediaPermissionNoInput = document.querySelector('input[id="social-media-permission-no"]')
         this.socialMediaPermissionBlankInput = document.querySelector('input[id="social-media-permission-none"]')
-        // this.fullFacebookVideoYesInput = document.querySelector('input[id="facebook-video-permission-yes"]')
-        // this.fullFacebookVideoNoInput = document.querySelector('input[id="facebook-video-permission-no"]')
         
         // Production
-        // this.productionLocationInput = document.querySelector('#production-location');
         this.productionLengthOfProgramInput = document.querySelector('input[name="program-length"]:checked');
         this.productionProducerInput = document.querySelector('#producer');
         this.productionMethodToRecieveInput = document.querySelector('#production-receive');
-        // this.productionHighlightInput = document.querySelector('input[name="production-highlight"]:checked');
         this.productionAdditionalInfoInput = document.querySelector('#additional-production-info');
 
         this.productionLengthOfProgram30Input = document.querySelector('input[id="program-length-30"]')
         this.productionLengthOfProgram60Input = document.querySelector('input[id="program-length-60"]')
         this.productionLengthOfProgramBlankInput = document.querySelector('input[id="program-length-none"]')
-        // this.productionHighlightYesInput = document.querySelector('input[id="production-highlight-yes"]')
-        // this.productionHighlightNoInput = document.querySelector('input[id="production-highlight-no"]')
 
         // Billboards
         this.billboardNewExistingInput = document.querySelector('input[name="billboard-new-existing"]:checked');
@@ -239,7 +214,6 @@ class UI {
     
     // Fill form to Edit
     fillForm(data) {
-      //colorBackground(data.typeOfClient) Change Background Before fill data
       this.typeOfClientInput.value = data.typeOfClient;
       this.soldByPersonInput.value = data.soldByPerson;
       this.clientCompanyNameInput.value = data.clientCompanyName;
@@ -248,11 +222,6 @@ class UI {
       this.clientPhoneInput.value = data.clientPhone;
       this.clientEmailInput.value = data.clientEmail;
       this.productionNameOfShowInput.value= data.production[0].productionNameOfShow;//update this in future
-      // this.productionCompanyInput.value = data.productionCompany;
-      // this.productionCompanyPersonInput.value = data.productionCompanyPerson;
-      // this.productionCompanyPersonTitleInput.value = data.productionCompanyPersonTitle;
-      // this.productionCompanyPhoneInput.value = data.productionCompanyPhone;
-      // this.productionCompanyEmailInput.value = data.productionCompanyEmail;
       this.copyrightFillInput.checked = radioButton(data.copyright, 'YES');
       this.copyrightFillNoInput.checked = radioButton(data.copyright, 'NO');
       this.contractSignDateInput.value = data.contractSignDate;
@@ -262,17 +231,9 @@ class UI {
       this.contractAdditionalInfoInput.value = data.contractAdditionalInfo;
 
       // Web OTT Indentification
-      // this.payWallRadioInFrontInput.checked = radioButton(data.webOTT[0].payWall, 'In Front');
-      // this.payWallRadioBehindInput.checked= radioButton(data.webOTT[0].payWall, 'Behind');
       this.selectVideoOnDemandYesInput.checked = radioButton(data.webOTT[0].selectVideoOnDemand, 'Yes');//RADIO BUTTON
       this.selectVideoOnDemandNoInput.checked = radioButton(data.webOTT[0].selectVideoOnDemand, 'No');//RADIO BUTTON
       this.webCategoryInput.value= data.webOTT[0].webCategory;
-      // this.otherVideoOnDemandInput.value= data.webOTT[0].otherVideoOnDemand;
-      // this.webGraphicRequiredYesInput.checked= radioButton(data.webOTT[0].webGraphicRequired,'yes');//RADIO BUTTON=====
-      // this.webGraphicRequiredNoInput.checked= radioButton(data.webOTT[0].webGraphicRequired,'no');//RADIO BUTTON=====
-      // this.webGraphicRequiredExisitingInput.checked = radioButton(data.webOTT[0].webGraphicRequired,'existing');//RADIO BUTTON
-      // this.webProgramDescriptionInput.value= data.webOTT[0].webProgramDescription;
-      // this.webButtonInput.value= data.webOTT[0].webButton;
 
       //Store Duplication FTP
       this.persmissionToSellYesInput.checked = radioButton(data.duplication[0].persmissionToSell,'Yes');//RADIO BUTTON=
@@ -292,12 +253,6 @@ class UI {
       // Social Media
       this.socialMediaPermissionYesInput.checked = radioButton(data.social[0].socialMediaPermission, 'Yes');//RADIO BUTTON=====
       this.socialMediaPermissionNoInput.checked = radioButton(data.social[0].socialMediaPermission, 'No');//RADIO BUTTON=====
-      // this.fullFacebookVideoYesInput.checked = radioButton(data.social[0].fullFacebookVideo, 'Yes');//RADIO BUTTON=====
-      // this.fullFacebookVideoNoInput.checked = radioButton(data.social[0].fullFacebookVideo, 'No');//RADIO BUTTON=====
-      // this.socialMediaStartDateInput.value= data.social[0].socialMediaStartDate;
-      // this.socialMediaEndDateInput.value= data.social[0].socialMediaEndDate;
-      // this.socialFrequencyInput.value= data.social[0].socialFrequency;
-      // this.socialAdditionalInfoInput.value= data.social[0].socialAdditionalInfo;
 
       // Production
       // this.productionLocationInput.value= data.production[0].productionLocation;
@@ -305,8 +260,6 @@ class UI {
       this.productionLengthOfProgram60Input.checked = radioButton(data.production[0].productionLengthOfProgram, '60 Minutes');//RADIO BUTTON=====
       this.productionProducerInput.value= data.production[0].productionProducer;
       this.productionMethodToRecieveInput.value= data.production[0].productionMethodToRecieve;
-      // this.productionHighlightYesInput.checked = radioButton(data.production[0].productionHighlight, 'Yes');//RADIO BUTTON=====
-      // this.productionHighlightNoInput.checked = radioButton(data.production[0].productionHighlight, 'No');//RADIO BUTTON=====
       this.productionAdditionalInfoInput.value= data.production[0].productionAdditionalInfo;
 
       //Billboards
@@ -379,11 +332,6 @@ class UI {
       this.clientPersonTitleInput.value = "";
       this.clientPhoneInput.value = "";
       this.clientEmailInput.value = "";
-      // this.productionCompanyInput.value = "";
-      // this.productionCompanyPersonInput.value = "";
-      // this.productionCompanyPersonTitleInput.value = "";
-      // this.productionCompanyPhoneInput.value = "";
-      // this.productionCompanyEmailInput.value = "";
 
       this.copyrightFillBlankInput.checked = true;
       this.contractSignDateInput.value = "";
@@ -393,13 +341,8 @@ class UI {
       this.contractAdditionalInfoInput.value = "";
 
       // Web OTT Indentification
-      // this.payWallInput.value= "";
       this.webCategoryInput.value= "";
       this.selectVideoOnDemandBlankInput.checked = true;
-      // this.otherVideoOnDemandInput.value= "";
-      // this.webGraphicRequiredInput.value= "";
-      // this.webProgramDescriptionInput.value= "";
-      // this.webButtonInput.value= "";
 
       //Store Duplication FTP
       this.persmissionToSellBlankInput.checked= true;
@@ -414,11 +357,6 @@ class UI {
 
       // Social Media
       this.socialMediaPermissionBlankInput.checked= true;
-      // this.fullFacebookVideoInput.value= "";
-      // this.socialMediaStartDateInput.value= "";
-      // this.socialMediaEndDateInput.value= "";
-      // this.socialFrequencyInput.value= "";
-      // this.socialAdditionalInfoInput.value= "";
 
       // Production
       this.productionLengthOfProgramBlankInput.checked= true;
@@ -479,22 +417,22 @@ class UI {
 }
 
 // Changes background color based on variable
-  function colorBackground(typeOfClient) {
-    if (typeOfClient === 'fusion'){
-      return 'bg-success';
-    } else if  (typeOfClient === 'paid programing'){
-      return 'bg-info';
-    } else if (typeOfClient === 'public affairs'){
-      return 'bg-primary';
-    } else {
-      return 'bg-dark';
-    }
+  // function colorBackground(typeOfClient) {
+  //   if (typeOfClient === 'fusion'){
+  //     return 'bg-success';
+  //   } else if  (typeOfClient === 'paid programing'){
+  //     return 'bg-info';
+  //   } else if (typeOfClient === 'public affairs'){
+  //     return 'bg-primary';
+  //   } else {
+  //     return 'bg-dark';
+  //   }
 
  
-  }
+  // }
   // convert Time
-  function convertTime(input) {
-    return moment(input, 'HH:mm').format('h:mm A');
-}
+//   function convertTime(input) {
+//     return moment(input, 'HH:mm').format('h:mm A');
+// }
 
 export const ui = new UI();
