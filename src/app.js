@@ -1,11 +1,6 @@
-const moment = require('moment');
-const jspdf = require('jspdf');
 import { http } from './http';
 import { ui } from './ui';
-// import { survey } from './survey';
-
-
-const serverAddy = 'http://104.236.92.35'
+import serverAddy from './config';
 
 
 // Get clients on DOM load
@@ -14,7 +9,6 @@ document.addEventListener('DOMContentLoaded', getClients);
 // Gets Clients from API using Get Request
 function getClients(){
     http.get(serverAddy + '/api/oec/')
-    // http.get('http://localhost:5000/api/oec/search/FUSION')
     .then(data => ui.showClients(data))
     .catch(err => console.log(err))
 }
@@ -25,17 +19,13 @@ function getClients(){
 function searchOEC(){
 
     const searchClientInput = document.querySelector('#search-client').value;
-    // console.log(searchClientInput)
     const searchTypeOfClientInput = document.querySelector('#search-typeOfClient').value;
     const webAddress = serverAddy + '/api/oec/search/' 
     let queryString = `search?typeOfClient=${searchTypeOfClientInput}&clientCompanyName=${searchClientInput}`
     let finalOutput = webAddress + queryString
     http.get(finalOutput)
-        // http.get('http://localhost:5000/api/oec/search/FUSION')
         .then(data => ui.showClients(data))
         .catch(err => console.log(err))
-
-    // console.log (finalOutput)
 
 
 }
@@ -52,10 +42,7 @@ document.querySelector('#submit-it').addEventListener('click', submitButtonPush)
 document.getElementById('new-contract-btn').addEventListener('click',newContractBtn);
 document.getElementById('load-contract-btn').addEventListener('click',loadContractsBtn);
 document.getElementById('weekend-schedule-btn').addEventListener('click', weekendScheduleBtn);
-// document.getElementById('weekend-schedule-btn').addEventListener('click',weekendScheduleBtn);
 
-//Calendar Submit button
-// document.getElementById('submit-calendar').addEventListener('click', submitCalendar); 
 
 
 // Hide parts of UI
@@ -75,70 +62,10 @@ function submitButtonPush() {
 
 
 // Sections
-        const sectionBasicInfo = document.querySelector('#Section-BasicInfo')
-
         function hideSection(section){
             section.classList.add('collapse');
         };
 
-        // hideSection()
-
-        // fusionOrder = [sectionBasicInfo, production, disclaimer,promotions,webOTT, store, socialMedia]
-
-// Submit Posts
-function submitCalendar() {
-    // Calendar
-
-    const calendarStartDate = document.querySelector('#search-start-date').value;
-    const calendarStartTime = document.querySelector('#search-start-time').value;
-    const calendarEndDate = document.querySelector('#search-start-date').value;
-    const calendarEndTime = document.querySelector('#search-end-time').value;
-    const text = document.querySelector('#calendar-title').value;
-    const episode = document.querySelector('#calendar-episode').value;
-    const description = document.querySelector('#calendar-description').value;
-    const isNew = document.querySelector('#search-is-new').value;
-    const evType = document.querySelector('#search-category-type').value;
-    // const nativeEditor = `"!nativeeditor_status" : "inserted"` 
-
-    const start_date = `${calendarStartDate} ${calendarStartTime}`//May have to make a custom function to convert this using moment
-    const end_date = `${calendarEndDate} ${calendarEndTime}`
-
-    const nativeeditor_status = {"!nativeeditor_status" : "inserted"}
-
-    const calendarData = {
-        start_date,
-        end_date,
-        text,
-        episode,
-        isNew,
-        description,
-        evType,
-        ...nativeeditor_status
-            }
-            //convert to JSON
-            var data = JSON.stringify(calendarData)
-
-
-//USE AJAX to send to server
-    var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": serverAddy + "data",
-    "method": "POST",
-    "headers": {
-      "Content-Type": "application/json",
-      "Cache-Control": "no-cache",
-      "Postman-Token": "2df46f71-0c7a-492c-9fab-0ad8d2eb1fa9"
-    },
-    "processData": false,
-    "data": JSON.stringify(calendarData)
-  }
-  
-  $.ajax(settings).done(function (response) {
-    console.log(response);
-  });
-
-}
 
 function submitPost() {
     //Contract Info
@@ -149,11 +76,6 @@ function submitPost() {
         const clientPersonTitle = document.querySelector('#contact-title').value;
         const clientPhone = document.querySelector('#contact-phone').value;
         const clientEmail = document.querySelector('#contact-email').value;
-        // const productionCompany = document.querySelector('#production-company').value;
-        // const productionCompanyPerson = document.querySelector('#production-contact-name').value;
-        // const productionCompanyPersonTitle = document.querySelector('#production-contact-title').value;
-        // const productionCompanyPhone = document.querySelector('#production-contact-phone').value;
-        // const productionCompanyEmail = document.querySelector('#production-contact-email').value;
         const copyright = document.querySelector('input[name="copyright-license"]:checked').value;
         const contractSignDate = document.querySelector('#contract-sign-date').value;
         const contractStartDate = document.querySelector('#contract-start').value;
@@ -162,13 +84,8 @@ function submitPost() {
         const contractAdditionalInfo = document.querySelector('#additional-info').value;
 
         // Web OTT Indentification
-        // const payWall = document.querySelector('input[name="paywall-permission"]:checked').value;
         const webCategory = document.querySelector('#web-category').value;
         const selectVideoOnDemand = document.querySelector('input[name="svod-gallery"]:checked').value;
-        // const otherVideoOnDemand = document.querySelector('#vod-other-description').value;
-        // const webGraphicRequired = document.querySelector('input[name="web-graphics"]:checked').value;
-        // const webProgramDescription = document.querySelector('#program-description').value;
-        // const webButton = document.querySelector('#web-buttons').value;
 
         // Store Duplication FTP
         const persmissionToSell = document.querySelector('input[name="sell-permission"]:checked').value;
@@ -183,18 +100,12 @@ function submitPost() {
 
         // Social Media
         const socialMediaPermission = document.querySelector('input[name="social-media-permission"]:checked').value;
-        // const fullFacebookVideo = document.querySelector('input[name="facebook-video-permission"]:checked').value;
-        // const socialMediaStartDate = document.querySelector('#social-media-start-date').value;
-        // const socialMediaEndDate = document.querySelector('#social-media-end-date').value;
-        // const socialFrequency = document.querySelector('#social-media-frequency').value;
-        // const socialAdditionalInfo = document.querySelector('#additional-social-media-info').value;
+
         // Production
-        // const productionLocation = document.querySelector('#production-location').value;
         const productionNameOfShow = document.querySelector('#show-name').value;
         const productionLengthOfProgram = document.querySelector('input[name="program-length"]:checked').value;
         const productionProducer = document.querySelector('#producer').value;
         const productionMethodToRecieve = document.querySelector('#production-receive').value;
-        // const productionHighlight = document.querySelector('input[name="production-highlight"]:checked').value;
         const productionAdditionalInfo = document.querySelector('#additional-production-info').value;
 
         // Billboards
@@ -259,11 +170,6 @@ function submitPost() {
         clientPersonTitle,
         clientPhone,
         clientEmail,
-        // productionCompany,
-        // productionCompanyPerson,
-        // productionCompanyPersonTitle,
-        // productionCompanyPhone,
-        // productionCompanyEmail,
         copyright,
         contractSignDate,
         contractStartDate,
@@ -272,13 +178,8 @@ function submitPost() {
         contractAdditionalInfo,
         webOTT: [
             {
-            // payWall,
             webCategory,
             selectVideoOnDemand,
-            // otherVideoOnDemand,
-            // webGraphicRequired,
-            // webProgramDescription,
-            // webButton
         }
     ],
         duplication: [
@@ -296,11 +197,7 @@ function submitPost() {
     ],
         social: [{
             socialMediaPermission,
-            // fullFacebookVideo,
-            // socialMediaStartDate,
-            // socialMediaEndDate,
-            // socialFrequency,
-            // socialAdditionalInfo
+
         }],
         production: [{
             productionNameOfShow,
@@ -361,28 +258,6 @@ function submitPost() {
 
     };
 
-    const GraphicPDF = {
-        client : clientCompanyName, 
-        title : "Awesome Title", 
-        workingTitle : "Big Time Promo", 
-        code : "PR", 
-        submittedBy : soldByPerson, 
-        length : "30", 
-        dueBy : "02/23/18", 
-        startDate : "02/23/18", 
-        killDate : "02/23/18", 
-        runDuring : "Weather World", 
-        dateSubmitted : "02/23/18", 
-        assignedTo : "Seth", 
-        departmentApprov : "Seth", 
-        approvedBy : "Seth" , 
-        specialNote : "This needs to be done yesterday"
-    }
-
-    
-
-//http://localhost:5000/api/oec/
-
     if(id === '') {
         // Create Post
     http.post(serverAddy + '/api/oec', data)
@@ -403,19 +278,10 @@ function submitPost() {
 //     }
     }
 
-    function createMessage(){
-        var newDiv = document.createElement("div").classList.add('alert')
-        var newContent = document.createTextNode("OEC Saved to the DATABASE")
-        newDiv.appendChild(newContent)
-    }
-
 
 }
 
-
-//Try to Clean this up later
-
-let selectValue = document.querySelector('#type-of-client').value.toLowerCase();
+//Utility Functions
 
 function contractSort() {
     const clientType = document.querySelector('#type-of-client').value.toLowerCase()
@@ -458,7 +324,6 @@ function newContractBtn(){
     hideWeekendSection()
     ui.clearForm()
     hideForms()
-    // hideSurveyJs()
     showMainForms();
 };
 
@@ -472,7 +337,6 @@ function weekendScheduleBtn(){
     hideMainForms()
     hideContracts()
     showWeekendSection()
-    console.log('Weekend Schedule');
 };
 
 function showMainForms(){
@@ -483,7 +347,6 @@ function hideMainForms(){
     hideDiv(forms)
 };
 
-/// Use this to replace a bunch of functions
 function showSection(section){
     section.classList.remove('collapse')
 }
@@ -492,9 +355,7 @@ function hideSection(section){
     section.classList.add('collapse')
 }
 
-function showContracts(){
-    contracts.classList.remove('collapse');
-};
+
 function hideContracts(){
     contracts.classList.add('collapse');
 };
@@ -507,9 +368,6 @@ function showWeekendSection(){
     weekendPart.classList.remove('collapse');
 };
 
-function hideCalendarInput(){
-    scheduleSubmit.classList.remove('collapse');
-}
 
 function showDiv(elementToMapOver){ 
     [].map.call(elementToMapOver, (el) => 
@@ -522,14 +380,6 @@ function hideDiv(elementToMapOver){
 )};
 
 
-
-
-// function submitPosts() {
-// const typeOfClient = document.querySelector('#type-of-client').value;
-
-// console.log(typeOfClient)
-
-// }
 
 // Delete OEC
 function deleteCard(e) {
@@ -554,13 +404,9 @@ function deleteCard(e) {
         const id = e.target.parentElement.dataset.id;
         http.get(serverAddy + `/api/oec/${id}`)
         .then(data =>{
-            // console.log(data)
-            // console.log(data._id)
-            // console.log(data._id)
             //load show oec
             showMainForms()
             hideContracts()
-            // sort form to only show type of client
             hideForms(data.typeOfClient.toLowerCase())
               // Fill form with data
             ui.fillForm(data);
