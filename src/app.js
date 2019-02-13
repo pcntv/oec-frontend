@@ -41,15 +41,15 @@ document.getElementById('type-of-client').addEventListener('change', contractSor
 document.querySelector('#submit-it').addEventListener('click', submitButtonPush); //UPDATE THIS
 document.getElementById('new-contract-btn').addEventListener('click',newContractBtn);
 document.getElementById('load-contract-btn').addEventListener('click',loadContractsBtn);
-document.getElementById('weekend-schedule-btn').addEventListener('click', weekendScheduleBtn);
+// document.getElementById('weekend-schedule-btn').addEventListener('click', weekendScheduleBtn);
 
 
 
 // Hide parts of UI
 const forms = document.querySelectorAll('div.big-form-input');
 const contracts = document.querySelector('div.load-contracts');
-const weekendPart = document.querySelector('div#weekend-schedule');
-const scheduleSubmit = document.querySelector('div.calendar-submit')
+// const weekendPart = document.querySelector('div#weekend-schedule');
+// const scheduleSubmit = document.querySelector('div.calendar-submit')
 
 function submitButtonPush() {
   submitPost()
@@ -321,7 +321,7 @@ function hideForms(typeOfShow){
 
 function newContractBtn(){
     hideContracts()
-    hideWeekendSection()
+    // hideWeekendSection()
     ui.clearForm()
     hideForms()
     showMainForms();
@@ -329,15 +329,15 @@ function newContractBtn(){
 
 function loadContractsBtn(){
     hideMainForms()
-    hideSection(weekendPart)
+    // hideSection(weekendPart)
     showSection(contracts);
 };
 
-function weekendScheduleBtn(){
-    hideMainForms()
-    hideContracts()
-    showWeekendSection()
-};
+// function weekendScheduleBtn(){
+//     hideMainForms()
+//     hideContracts()
+//     showWeekendSection()
+// };
 
 function showMainForms(){
     showDiv(forms)
@@ -360,13 +360,13 @@ function hideContracts(){
     contracts.classList.add('collapse');
 };
 
-function hideWeekendSection(){
-    weekendPart.classList.add('collapse');
-};
+// function hideWeekendSection(){
+//     weekendPart.classList.add('collapse');
+// };
 
-function showWeekendSection(){
-    weekendPart.classList.remove('collapse');
-};
+// function showWeekendSection(){
+//     weekendPart.classList.remove('collapse');
+// };
 
 
 function showDiv(elementToMapOver){ 

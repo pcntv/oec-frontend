@@ -30,131 +30,120 @@
           <a class="btn btn-info btn-lg" id="load-contract-btn" href="#" role="button">
               <i class="fas fa-folder-open"></i>
             Find OEC</a>
-          <a class="btn btn-warning btn-lg" id="weekend-schedule-btn" href="#" role="button">
-              <i class="far fa-calendar-alt"></i>
-            Schedule</a>
 
 
         </p>
       </div>
       </div>
 
-      <!-- ============= SCHEDULE ========= -->
-
-      <div class="embed-responsive embed-responsive-1by1 collapse" id="weekend-schedule">
-        <iframe class="embed-responsive-item" src="http://104.236.92.35/calendar"></iframe>
-      </div>
-
-
-<!-- ============Load Schedule Example========= -->
+    <!-- ============Load Schedule Example========= -->
       
-      <div class="load-contracts collapse">
+    <div class="load-contracts collapse">
   
-        <div class="container">
-            <div class="row"> 
-              <div class="card col-4 d-inline" style="width: 18rem;" >
-                <div class="card text-white bg-primary mb-3">
-                  <div class="card-header"> <legend> <i class="fas fa-search"></i> SEARCH </legend></div>
-      
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label class="col-form-label col-form-label-lg" id="search-clientName">CLIENT</label>
-                            <input class="form-control form-control-lg" type="text" placeholder="name"  id="search-client">
-                          </div>
-
-                            
-                        <div class="form-group">
-                            <label class="col-form-label col-form-label-lg">TYPE</label>
-                            <select class="custom-select" id="search-typeOfClient">
-                              <option value="">CHOOSE</option>
-                              <option value="PARTNER">PARTNER</option>
-                              <option value="UNDERWRITER">UNDERWRITER</option>
-                              <option value="FUSION">FUSION</option>
-                            </select>
-                          </div>
-                          <br>
-                          <div class="form-group">
-                              <button type="button" class="btn btn-info btn-lg btn-block" id="search-Submit">Submit</button>
+      <div class="container">
+          <div class="row"> 
+            <div class="card col-4 d-inline" style="width: 18rem;" >
+              <div class="card text-white bg-primary mb-3">
+                <div class="card-header"> <legend> <i class="fas fa-search"></i> SEARCH </legend></div>
+    
+                  <div class="card-body">
+                      <div class="form-group">
+                          <label class="col-form-label col-form-label-lg" id="search-clientName">CLIENT</label>
+                          <input class="form-control form-control-lg" type="text" placeholder="name"  id="search-client">
                         </div>
-                    </div>
-                      </div>
-                    </div>
-              <div id="contract" class="col-8"></div>            
-            </div>
-                    
-      </div>
-    </div>
 
-
-      <div class="weekend-schedule collapse">
-          <div class="row">
-              <div class="container postsContainer">
-                  <div class="card card-body card-form">
-                    <h1>Saturday</h1>
-                    <p class="lead">Add New</p>
+                          
+                      <div class="form-group">
+                          <label class="col-form-label col-form-label-lg">TYPE</label>
+                          <select class="custom-select" id="search-typeOfClient">
+                            <option value="">CHOOSE</option>
+                            <option value="PARTNER">PARTNER</option>
+                            <option value="UNDERWRITER">UNDERWRITER</option>
+                            <option value="FUSION">FUSION</option>
+                          </select>
+                        </div>
+                        <br>
                         <div class="form-group">
-                            <input type="text" id="programName" class="form-control" placeholder="Program Name">
+                            <button type="button" class="btn btn-info btn-lg btn-block" id="search-Submit">Submit</button>
+                      </div>
+                  </div>
+                    </div>
+                  </div>
+            <div id="contract" class="col-8"></div>            
+          </div>
+                  
+    </div>
+  </div>
+
+
+    <div class="weekend-schedule collapse">
+        <div class="row">
+            <div class="container postsContainer">
+                <div class="card card-body card-form">
+                  <h1>Saturday</h1>
+                  <p class="lead">Add New</p>
+                      <div class="form-group">
+                          <input type="text" id="programName" class="form-control" placeholder="Program Name">
+                        </div>
+                  
+                        <div class="form-group">
+                          <input type="text" id="episodeName" class="form-control" placeholder="Episode Name">
+                        </div>
+                  
+                        <div class="form-group">
+                          <textarea id="description" class="form-control" placeholder="Long Description"></textarea>
+                        </div>
+            
+                        <div class="form-group">
+                            <input type="text" id="typeOfClient" class="form-control" placeholder="fusion">
                           </div>
                     
                           <div class="form-group">
-                            <input type="text" id="episodeName" class="form-control" placeholder="Episode Name">
+                            <label for="time">Start Time /  End Time </label>
+                            <div class="input-group"><input type="time" id="startTime" class="form-control">
+                            <div class="input-group-addon">
+                              to
+                            </div>
+                                 <input type="time" id="endTime" class="form-control">
+                                </div>
                           </div>
-                    
+
                           <div class="form-group">
-                            <textarea id="description" class="form-control" placeholder="Long Description"></textarea>
+                              <label class="control-label">Run Time: </label>
+                                  <input id="runTime" type="text" class="form-control" placeholder="00:00:00">
+                                        <span class="help-block">hours : minutes : seconds</span>
+                            </div>
+              
+              
+              
+              <!-- Marketing -->
+              <form class="form-inline col-12">
+                            <div class="form-group">
+                                <label for="date">PCN Marketing Assign</label>
+                                <input type="text" id="marketingAssign" class="form-control col-2" placeholder="WF">
+                              </div>
+                        
+                              <div class="form-group">
+                                <label for="date">Social Approval Date</label>
+                                <input type="date" id="socialApprovalDate" class="form-control" placeholder="Social Approval Date">
+                              </div>
+                              </form>
+                        
+                              <input type="hidden" id="id" value="">
+                            </div>
+              
+                              <div class="form-group">
+                              <button class="post-submit btn btn-primary btn-block">Post It</button>
+                            </div>
+                            <span class="form-end"></span>
+                            
                           </div>
               
-                          <div class="form-group">
-                              <input type="text" id="typeOfClient" class="form-control" placeholder="fusion">
-                            </div>
-                      
-                            <div class="form-group">
-                              <label for="time">Start Time /  End Time </label>
-                              <div class="input-group"><input type="time" id="startTime" class="form-control">
-                              <div class="input-group-addon">
-                                to
-                              </div>
-                                   <input type="time" id="endTime" class="form-control">
-                                  </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label">Run Time: </label>
-                                    <input id="runTime" type="text" class="form-control" placeholder="00:00:00">
-                                          <span class="help-block">hours : minutes : seconds</span>
-                              </div>
-                
-                
-                
-                <!-- Marketing -->
-                <form class="form-inline col-12">
-                              <div class="form-group">
-                                  <label for="date">PCN Marketing Assign</label>
-                                  <input type="text" id="marketingAssign" class="form-control col-2" placeholder="WF">
-                                </div>
-                          
-                                <div class="form-group">
-                                  <label for="date">Social Approval Date</label>
-                                  <input type="date" id="socialApprovalDate" class="form-control" placeholder="Social Approval Date">
-                                </div>
-                                </form>
-                          
-                                <input type="hidden" id="id" value="">
-                              </div>
-                
-                                <div class="form-group">
-                                <button class="post-submit btn btn-primary btn-block">Post It</button>
-                              </div>
-                              <span class="form-end"></span>
-                              
-                            </div>
-                
-                      </div>
-
-                      <br>
-                      <div id="posts"></div>
                     </div>
-                
+
+                    <br>
+                    <div id="posts"></div>
+                  </div>
       
 
     <!--================= basic-contract ============= -->
